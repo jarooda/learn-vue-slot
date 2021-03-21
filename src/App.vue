@@ -1,32 +1,35 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
+    <div class="flex justify-around">
+      <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
+      <div v-for="(view, index) in views" :key="index" class="inline">
+        <router-link :to="`/${index + 1}`">{{ index + 1}}</router-link>
+      </div>
     </div>
-    <router-view/>
+    <component :is="layout">
+      <router-view/>
+    </component>
   </div>
 </template>
 
+<script>
+export default {
+  data () {
+    return {
+      defaultLayout: 'default',
+      views: new Array(5)
+    }
+  },
+  computed: {
+    layout () {
+      const viewedLayout = (this.$route.meta.layout || this.defaultLayout) + '-layout'
+      return viewedLayout
+    }
+  }
+}
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

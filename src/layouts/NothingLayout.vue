@@ -1,12 +1,14 @@
 <template>
   <div>
-    <h1 class="text-lg text-red-600">This is Home</h1>
+    <slot />
   </div>
 </template>
 
 <script>
-export default {
 
+export default {
+  components: {
+  }
 }
 </script>
 

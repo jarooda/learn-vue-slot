@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-lg text-red-600">This is Home</h1>
+    <h1 class="text-lg text-blue-600">This is Navbar</h1>
   </div>
 </template>
 
